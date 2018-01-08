@@ -1,0 +1,9 @@
+{
+  "name": "@atto/parse-uri",
+  "version": "0.0.1",
+  "main": "./parse-uri",
+  "repository": "github:brillout/parse-uri",
+  "dependencies": {
+    "reassert": "^1.0.4"
+  }
+}
