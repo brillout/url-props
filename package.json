@@ -1,9 +1,11 @@
 {
-  "name": "@atto/parse-uri",
-  "version": "0.0.1",
-  "main": "./parse-uri",
-  "repository": "github:brillout/parse-uri",
+  "name": "@brillout/parse-uri",
+  "version": "0.1.0",
   "dependencies": {
-    "reassert": "^1.0.4"
+    "reassert": "^1.1.11"
+  },
+  "repository": "github:brillout/parse-uri",
+  "publishConfig": {
+    "access": "public"
   }
 }

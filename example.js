@@ -1,4 +1,4 @@
-const parseUri = require('./');
+const parseUri = require('.');
 
 const path = 'hello/there?opt=1#sectionA';
 

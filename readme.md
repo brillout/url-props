@@ -3,7 +3,7 @@ Parses URIs.
 Running
 
 ~~~js
-const parseUri = require('parse-uri'); // npm install @atto/parse-uri
+const parseUri = require('parse-uri'); // npm install @brillout/parse-uri
 
 const path = 'hello/there?opt=1#sectionA';
 
