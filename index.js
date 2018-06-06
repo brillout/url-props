@@ -27,6 +27,7 @@ function parseUri(uri) {
     );
 
     const url = {
+        uri,
         origin,
         pathname: url_object.pathname,
         search: url_object.search,
