@@ -1,10 +1,10 @@
 {
-  "name": "@brillout/parse-uri",
-  "version": "0.1.1",
+  "name": "@brillout/parse-url",
+  "version": "0.2.0",
   "dependencies": {
-    "reassert": "^1.1.11"
+    "@brillout/reassert": "^0.1.1"
   },
-  "repository": "github:brillout/parse-uri",
+  "repository": "github:brillout/parse-url",
   "publishConfig": {
     "access": "public"
   }

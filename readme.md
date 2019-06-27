@@ -1,25 +1,37 @@
-Parses URIs.
+Fully-featured URL parsing.
+- Works in Node.js.
+- Works in the browser.
+- Parses URLs with hostname, e.g. `https://example.org/hello/there`, as well as URLs without origin, e.g. `/hello/there`.
+- Parses the query string.
+- Pretty logging when doing `console.log(parseUrl('https://example.org/hello/there'))`.
 
 Running
 
 ~~~js
-const parseUri = require('parse-uri'); // npm install @brillout/parse-uri
+const parseUrl = require('parse-url'); // npm install @brillout/parse-url
 
-const path = 'hello/there?opt=1#sectionA';
+const url = 'hello/there?opt=1#sectionA';
 
-console.log(parseUri(path));
-console.log(parseUri('https://example.org/'+path));
+console.log(parseUrl(url));
+console.log(parseUrl('https://example.org/'+url));
 ~~~
 
 prints
 
 ~~~js
-{ origin: null,
+{
+  url: 'hello/there?opt=1#sectionA',
+  origin: null,
   pathname: '/hello/there',
-  search: '?opt=1',
-  hash: '#sectionA' }
-{ origin: 'https://example.org',
+  query: {opt: 1},
+  queryString: '?opt=1',
+  hash: '#sectionA'
+}
+{ url: 'https://example.org/hello/there?opt=1#sectionA',
+  origin: 'https://example.org',
   pathname: '/hello/there',
-  search: '?opt=1',
-  hash: '#sectionA' }
+  query: {opt: 1},
+  queryString: '?opt=1',
+  hash: '#sectionA'
+}
 ~~~

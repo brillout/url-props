@@ -1,6 +1,6 @@
-const parseUri = require('.');
+const parseUrl = require('.');
 
-const path = 'hello/there?opt=1#sectionA';
+const url = 'hello/there?opt=1#sectionA';
 
-console.log(parseUri(path));
-console.log(parseUri('https://example.org/'+path));
+console.log(parseUrl(url));
+console.log(parseUrl('https://example.org/'+url));

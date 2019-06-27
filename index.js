@@ -1,47 +1,79 @@
-const assert = require('reassert');
-const assert_usage = assert;
+const assert = require('@brillout/reassert');
 
-module.exports = parseUri;
+module.exports = parseUrl;
 
-function parseUri(uri) {
-    assert_usage(uri && uri.constructor===String, uri);
+function parseUrl(url) {
+  assert.usage(url && url.constructor===String, url);
 
-    const FAKE_BASE = 'https://i-do-not-exist.example.org';
+  const urlObject = parse(url);
 
-    const _URL = (
-        typeof URL !== 'undefined' ? (
-            URL
-        ) : (
-            eval('require')('url').URL
-        )
-    );
+  const queryString = urlObject.search;
+  const query = parseQuery(queryString);
 
-    const url_object = new _URL(uri, FAKE_BASE);
+  const urlProps = {
+    url,
+    origin: urlObject.origin,
+    pathname: urlObject.pathname,
+    query,
+    queryString,
+    hash: urlObject.hash,
+  };
+  assert.internal(urlProps.url===url);
+  assert.internal(urlProps.origin===null || urlProps.origin.constructor===String);
+  assert.internal(urlProps.pathname.startsWith('/'));
+  assert.internal(urlProps.query.constructor===Object);
+  assert.internal(urlProps.queryString.constructor===String);
+  assert.internal(urlProps.hash.constructor===String);
 
-    const origin = (
-        url_object.origin === FAKE_BASE ? (
-            null
-        ) : (
-            url_object.origin
-        )
-    );
+  Object.defineProperty(urlProps, 'toString', {value: () => JSON.stringify(urlProps)});
 
-    const url = {
-        uri,
-        origin,
-        pathname: url_object.pathname,
-        search: url_object.search,
-        hash: url_object.hash,
-    };
-
-    Object.defineProperty(url, 'toString', {value: () => JSON.stringify(url)});
-
-    validateUrl(url);
-
-    return url;
+  return urlProps;
 }
 
-function validateUrl(url) {
-    assert(url && url.constructor===Object, url);
-    assert(url.pathname && url.pathname.constructor===String && url.pathname.startsWith('/'), url);
+function parse(url) {
+  const FAKE_BASE = 'https://i-do-not-exist.example.org';
+
+  const _URL = (
+    typeof URL !== 'undefined' ? (
+      URL
+    ) : (
+      eval('require')('url').URL
+    )
+  );
+
+  const urlInstance = new _URL(url, FAKE_BASE);
+
+  const origin = (
+    urlInstance.origin === FAKE_BASE ? (
+      null
+    ) : (
+      urlInstance.origin
+    )
+  );
+
+  const urlObject = {
+    origin,
+    pathname: urlInstance.pathname,
+    search: urlInstance.search,
+    hash: urlInstance.hash,
+  };
+
+  return urlObject;
+}
+
+function parseQuery(search) {
+  const _URLSearchParams = (
+    typeof URLSearchParams !== 'undefined' ? (
+      URLSearchParams
+    ) : (
+      eval('require')('url').URLSearchParams
+    )
+  );
+  const urlSearchParams = new _URLSearchParams(search);
+  const query = {};
+  for (let p of urlSearchParams) {
+    const paramName = p[0];
+    query[paramName] = urlSearchParams.get(paramName);
+  }
+  return query;
 }
