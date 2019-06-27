@@ -1,6 +1,4 @@
 const parseUrl = require('.');
 
-const url = 'hello/there?opt=1#sectionA';
-
-console.log(parseUrl(url));
-console.log(parseUrl('https://example.org/'+url));
+console.log(parseUrl('http://localhost:3000/hi'));
+console.log(parseUrl('hello/there?opt=1#sectionA'));

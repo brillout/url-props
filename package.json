@@ -1,11 +1,17 @@
 {
   "name": "@brillout/parse-url",
-  "version": "0.2.0",
+  "version": "0.2.1",
+  "scripts": {
+    "docs": "mdocs"
+  },
   "dependencies": {
     "@brillout/reassert": "^0.1.1"
   },
   "repository": "github:brillout/parse-url",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "mdocs": "^1.0.0"
   }
 }

@@ -1,3 +1,80 @@
+<!---
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+-->
 Fully-featured URL parsing.
 - Works in Node.js.
 - Works in the browser.
@@ -8,30 +85,115 @@ Fully-featured URL parsing.
 Running
 
 ~~~js
-const parseUrl = require('parse-url'); // npm install @brillout/parse-url
+// ./example.js
 
-const url = 'hello/there?opt=1#sectionA';
+const parseUrl = require('@brillout/parse-url');
 
-console.log(parseUrl(url));
-console.log(parseUrl('https://example.org/'+url));
+console.log(parseUrl('http://localhost:3000/hi'));
+console.log(parseUrl('hello/there?opt=1#sectionA'));
 ~~~
 
 prints
 
 ~~~js
 {
+  url: 'http://localhost:3000/hi',
+  origin: 'http://localhost:3000',
+  protocol: 'http:',
+  hostname: 'localhost',
+  port: '3000',
+  pathname: '/hi',
+  query: {},
+  queryString: '',
+  hash: ''
+}
+{
   url: 'hello/there?opt=1#sectionA',
   origin: null,
+  protocol: null,
+  hostname: null,
+  port: null,
   pathname: '/hello/there',
-  query: {opt: 1},
-  queryString: '?opt=1',
-  hash: '#sectionA'
-}
-{ url: 'https://example.org/hello/there?opt=1#sectionA',
-  origin: 'https://example.org',
-  pathname: '/hello/there',
-  query: {opt: 1},
+  query: { opt: '1' },
   queryString: '?opt=1',
   hash: '#sectionA'
 }
 ~~~
+
+<!---
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+
+
+
+
+
+
+    WARNING, READ THIS.
+    This is a computed file. Do not edit.
+    Instead, edit `/readme.template.md` and run `npm run docs` (or `yarn docs`).
+
+
+
+
+
+
+-->

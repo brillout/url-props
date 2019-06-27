@@ -13,6 +13,9 @@ function parseUrl(url) {
   const urlProps = {
     url,
     origin: urlObject.origin,
+    protocol: urlObject.protocol,
+    hostname: urlObject.hostname,
+    port: urlObject.port,
     pathname: urlObject.pathname,
     query,
     queryString,
@@ -23,7 +26,9 @@ function parseUrl(url) {
   assert.internal(urlProps.pathname.startsWith('/'));
   assert.internal(urlProps.query.constructor===Object);
   assert.internal(urlProps.queryString.constructor===String);
+  assert.internal(urlProps.queryString.startsWith('?') || urlProps.queryString==='');
   assert.internal(urlProps.hash.constructor===String);
+  assert.internal(urlProps.hash.startsWith('#') || urlProps.hash==='');
 
   Object.defineProperty(urlProps, 'toString', {value: () => JSON.stringify(urlProps)});
 
@@ -53,10 +58,22 @@ function parse(url) {
 
   const urlObject = {
     origin,
-    pathname: urlInstance.pathname,
-    search: urlInstance.search,
-    hash: urlInstance.hash,
+    protocol: null,
+    hostname: null,
+    port: null,
   };
+  [
+    origin && 'protocol',
+    origin && 'hostname',
+    origin && 'port',
+    'pathname',
+    'search',
+    'hash',
+  ]
+  .filter(Boolean)
+  .forEach(urlProp => {
+    urlObject[urlProp] = urlInstance[urlProp];
+  });
 
   return urlObject;
 }

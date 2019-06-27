@@ -27,6 +27,11 @@ is-fullwidth-code-point@^2.0.0:
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz#a3b30a5c4f199183167aaab93beefae3ddfb654f"
   integrity sha1-o7MKXE8ZkYMWeqq5O+764937ZU8=
 
+mdocs@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mdocs/-/mdocs-1.0.0.tgz#81b7aa87cbd1f87d28065822a31ac04cde50a0ab"
+  integrity sha512-rcB4/Lo+Ih2NQ2Ez6AxGRuJlm6O4/xxdwQC9v9xon49xHN5MetohNsUQcUt6hKI1BKeNP1R8Cxyub6dAklpkyg==
+
 reassert@^1.1.14:
   version "1.1.21"
   resolved "https://registry.yarnpkg.com/reassert/-/reassert-1.1.21.tgz#0e61cde7d2dde876d301342153cd9b1c7459649f"
