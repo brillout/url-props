@@ -1,4 +1,4 @@
-const parseUrl = require('.');
+const getUrlProps = require('.');
 
-console.log(parseUrl('http://localhost:3000/hi'));
-console.log(parseUrl('hello/there?opt=1#sectionA'));
+console.log(getUrlProps('http://localhost:3000/hi'));
+console.log(getUrlProps('hello/there?opt=1#sectionA'));

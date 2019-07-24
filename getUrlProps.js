@@ -1,8 +1,8 @@
 const assert = require('@brillout/reassert');
 
-module.exports = parseUrl;
+module.exports = getUrlProps;
 
-function parseUrl(url) {
+function getUrlProps(url) {
   assert.usage(url && url.constructor===String, url);
 
   const urlObject = parse(url);

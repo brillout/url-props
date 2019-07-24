@@ -87,10 +87,10 @@ Running
 ~~~js
 // ./example.js
 
-const parseUrl = require('@brillout/parse-url');
+const getUrlProps = require('@brillout/url-props');
 
-console.log(parseUrl('http://localhost:3000/hi'));
-console.log(parseUrl('hello/there?opt=1#sectionA'));
+console.log(getUrlProps('http://localhost:3000/hi'));
+console.log(getUrlProps('hello/there?opt=1#sectionA'));
 ~~~
 
 prints

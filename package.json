@@ -1,13 +1,14 @@
 {
-  "name": "@brillout/parse-url",
-  "version": "0.2.1",
+  "name": "@brillout/url-props",
+  "main": "./getUrlProps",
+  "version": "0.1.0",
   "scripts": {
     "docs": "mdocs"
   },
   "dependencies": {
     "@brillout/reassert": "^0.1.1"
   },
-  "repository": "github:brillout/parse-url",
+  "repository": "github:brillout/url-props",
   "publishConfig": {
     "access": "public"
   },
