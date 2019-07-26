@@ -98,6 +98,7 @@ prints
 ~~~js
 {
   url: 'http://localhost:3000/hi',
+  href: 'http://localhost:3000/hi',
   origin: 'http://localhost:3000',
   protocol: 'http:',
   hostname: 'localhost',
@@ -109,6 +110,7 @@ prints
 }
 {
   url: 'hello/there?opt=1#sectionA',
+  href: null,
   origin: null,
   protocol: null,
   hostname: null,

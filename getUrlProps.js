@@ -3,15 +3,32 @@ const assert = require('@brillout/reassert');
 module.exports = getUrlProps;
 
 function getUrlProps(url) {
-  assert.usage(url && url.constructor===String, url);
+  assert.usage(
+    url,
+    "You need to provide a `url` when calling `getUrlProps(url)`."
+  );
 
-  const urlObject = parse(url);
+  const urlString = (
+    url.constructor===String && url ||
+    url.href && url.href.constructor===String && url.href ||
+    url.url && url.url.constructor===String && url.url ||
+    url.pathname && url.pathname.constructor===String && url.pathname ||
+    null
+  );
+
+  assert.usage(
+    urlString,
+    "The `url` you passed to `getUrlProps(url)` should be a URL string or a URL object."
+  );
+
+  const urlObject = parse(urlString);
 
   const queryString = urlObject.search;
   const query = parseQuery(queryString);
 
   const urlProps = {
-    url,
+    url: urlString,
+    href: urlObject.origin && urlString,
     origin: urlObject.origin,
     protocol: urlObject.protocol,
     hostname: urlObject.hostname,
@@ -21,12 +38,16 @@ function getUrlProps(url) {
     queryString,
     hash: urlObject.hash,
   };
-  assert.internal(urlProps.url===url);
-  assert.internal(urlProps.origin===null || urlProps.origin.constructor===String);
+  assert.internal(urlProps.url===urlString);
+  assert.internal(urlProps.href===null || urlProps.href.constructor===String && urlProps.href.startsWith('http'));
+  assert.internal(urlProps.protocol===null || urlProps.protocol.constructor===String && urlProps.protocol.startsWith('http'));
+  assert.internal(urlProps.origin===null || urlProps.origin.constructor===String && urlProps.origin.startsWith('http'));
   assert.internal(urlProps.pathname.startsWith('/'));
+
   assert.internal(urlProps.query.constructor===Object);
   assert.internal(urlProps.queryString.constructor===String);
   assert.internal(urlProps.queryString.startsWith('?') || urlProps.queryString==='');
+
   assert.internal(urlProps.hash.constructor===String);
   assert.internal(urlProps.hash.startsWith('#') || urlProps.hash==='');
 
@@ -35,7 +56,7 @@ function getUrlProps(url) {
   return urlProps;
 }
 
-function parse(url) {
+function parse(urlString) {
   const FAKE_BASE = 'https://i-do-not-exist.example.org';
 
   const _URL = (
@@ -46,7 +67,7 @@ function parse(url) {
     )
   );
 
-  const urlInstance = new _URL(url, FAKE_BASE);
+  const urlInstance = new _URL(urlString, FAKE_BASE);
 
   const origin = (
     urlInstance.origin === FAKE_BASE ? (
